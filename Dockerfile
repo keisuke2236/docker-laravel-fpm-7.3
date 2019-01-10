@@ -29,3 +29,9 @@ RUN { \
 
 COPY . /var/www/html
 RUN chown -R www-data:www-data /var/www
+
+RUN cd /var/www/html
+RUN curl -sS https://getcomposer.org/installer | php
+RUN mv /var/www/html/composer.phar /usr/local/bin/composer
+RUN su
+RUN composer install
